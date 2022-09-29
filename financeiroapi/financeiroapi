@@ -1,0 +1,7 @@
+# FINANCEIROAPI
+
+	+ Demandas {FINANCEIROAPIDIA><MES><ANO><HORA><MINUTO><SEGUNDO>}
+	
+		- FINANCEIROAPI29092022142921
+		
+			- Implementar configuração ao Banco de Dados PostgreSQL
