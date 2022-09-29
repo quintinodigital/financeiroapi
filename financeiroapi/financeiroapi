@@ -9,3 +9,7 @@
 		- FINANCEIROAPI29092022143236
 			
 			- Implementar Mapeamento de Dados do Gerenciador de Acessos
+			
+		- FINANCEIROAPI29092022202133
+		
+			- [FEATURE] Criar tabela (TB_ACESSO_PESSOA) para relação entre Pessoa Jurídica vinculados a aplicativos, por exemplo, para Acessos
