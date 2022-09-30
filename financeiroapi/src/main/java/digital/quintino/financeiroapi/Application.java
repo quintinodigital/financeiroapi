@@ -14,6 +14,7 @@ import digital.quintino.financeiroapi.domain.AcessoDomain;
 import digital.quintino.financeiroapi.domain.PessoaDomain;
 import digital.quintino.financeiroapi.domain.TipoAcessoDomain;
 import digital.quintino.financeiroapi.domain.TipoPessoaDomain;
+import digital.quintino.financeiroapi.enumeration.TipoRecuperacaoAcessoEnumeration;
 import digital.quintino.financeiroapi.repository.TipoAcessoInterfaceRepository;
 import digital.quintino.financeiroapi.repository.TipoPessoaInterfaceRepository;
 import digital.quintino.financeiroapi.service.AcessoService;
@@ -59,9 +60,11 @@ public class Application implements CommandLineRunner {
 		
 			this.tipoAcessoInterfaceRepository.saveAll(Arrays.asList(tipoAcessoDomain1, tipoAcessoDomain2));
 			
-		AcessoDomain acessoDomain = new AcessoDomain(tipoAcessoDomain1, pessoaDomain1, "josequintino@hotmail.com.br", "<SENHA_QUALQUER>", new Date());
+		AcessoDomain acessoDomain1 = new AcessoDomain(tipoAcessoDomain1, TipoRecuperacaoAcessoEnumeration.EMAIL, pessoaDomain1, pessoaDomain2, "999999991", "<SENHA_APLICATIVO>", new Date());
 		
-			this.acessoService.save(acessoDomain);
+		AcessoDomain acessoDomain2 = new AcessoDomain(tipoAcessoDomain2, TipoRecuperacaoAcessoEnumeration.SMS, pessoaDomain1, pessoaDomain2, "999999992", "<SENHA_OPERACAO_BANCARIA>", new Date());
+		
+			this.acessoService.saveAll(Arrays.asList(acessoDomain1, acessoDomain2));
 		
 	}
 

@@ -39,6 +39,10 @@ public class AcessoDomain {
 	@JoinColumn(name = "ID_PESSOA_RESPONSAVEL")
 	private PessoaDomain pessoaResponsavel;
 	
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "ID_PESSOA_MONITORADA")
+	private PessoaDomain pessoaMonitorada;
+	
 	@Column(name = "IDENTIFICADOR", length = 100, nullable = false)
 	private String identificador;
 	
@@ -66,6 +70,16 @@ public class AcessoDomain {
 		this.dataCriacao = dataCriacao;
 	}
 
+	public AcessoDomain(TipoAcessoDomain tipoAcessoDomain, TipoRecuperacaoAcessoEnumeration tipoRecuperacaoAcessoEnumeration, PessoaDomain pessoaResponsavel, PessoaDomain pessoaMonitorada, String identificador, String chave, Date dataCriacao) {
+		this.tipoAcessoDomain = tipoAcessoDomain;
+		this.tipoRecuperacaoAcessoEnumeration = tipoRecuperacaoAcessoEnumeration;
+		this.pessoaResponsavel = pessoaResponsavel;
+		this.pessoaMonitorada = pessoaMonitorada;
+		this.identificador = identificador;
+		this.chave = chave;
+		this.dataCriacao = dataCriacao;
+	}
+
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -82,6 +96,14 @@ public class AcessoDomain {
 		this.tipoAcessoDomain = tipoAcessoDomain;
 	}
 
+	public TipoRecuperacaoAcessoEnumeration getTipoRecuperacaoAcessoEnumeration() {
+		return tipoRecuperacaoAcessoEnumeration;
+	}
+
+	public void setTipoRecuperacaoAcessoEnumeration(TipoRecuperacaoAcessoEnumeration tipoRecuperacaoAcessoEnumeration) {
+		this.tipoRecuperacaoAcessoEnumeration = tipoRecuperacaoAcessoEnumeration;
+	}
+
 	public PessoaDomain getPessoaResponsavel() {
 		return pessoaResponsavel;
 	}
@@ -90,12 +112,12 @@ public class AcessoDomain {
 		this.pessoaResponsavel = pessoaResponsavel;
 	}
 
-	public TipoRecuperacaoAcessoEnumeration getTipoRecuperacaoAcessoEnumeration() {
-		return tipoRecuperacaoAcessoEnumeration;
+	public PessoaDomain getPessoaMonitorada() {
+		return pessoaMonitorada;
 	}
 
-	public void setTipoRecuperacaoAcessoEnumeration(TipoRecuperacaoAcessoEnumeration tipoRecuperacaoAcessoEnumeration) {
-		this.tipoRecuperacaoAcessoEnumeration = tipoRecuperacaoAcessoEnumeration;
+	public void setPessoaMonitorada(PessoaDomain pessoaMonitorada) {
+		this.pessoaMonitorada = pessoaMonitorada;
 	}
 
 	public String getIdentificador() {
