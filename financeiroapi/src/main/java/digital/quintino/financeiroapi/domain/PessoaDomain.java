@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TB_PESSOA")
@@ -19,9 +21,11 @@ public class PessoaDomain {
 	private Long codigo;
 	
 	@OneToOne
-	@JoinColumn(name = "ID_TIPO_PESSOA")
+	@JoinColumn(name = "ID_TIPO_PESSOA", nullable = false)
 	private TipoPessoaDomain tipoPessoaDomain;
 	
+	@NotNull(message = "O campo NOME deve ser informado!")
+	@NotBlank(message = "O campo NOME deve ser informado!")
 	@Column(name = "NOME", length = 100, unique = true, nullable = false)
 	private String nome;
 	

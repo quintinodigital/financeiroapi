@@ -13,3 +13,12 @@
 		- FINANCEIROAPI29092022202133
 		
 			- [FEATURE] Criar tabela (TB_ACESSO_PESSOA) para relação entre Pessoa Jurídica vinculados a aplicativos, por exemplo, para Acessos
+			
+		- FINANCEIROAPI30092022132358
+		
+			- [FEATURE] Implementar endpoints: Tipo de Pessoa, Tipo de Acesso, Pessoa e Acesso
+			
+		- FINANCEIROAPIXXXXXXXXXXX
+		
+			- [HOTFIX] Corrigir classes com interface Serializable 
+			
