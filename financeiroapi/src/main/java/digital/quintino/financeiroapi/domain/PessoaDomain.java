@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
+
 @Entity
 @Table(name = "TB_PESSOA")
 public class PessoaDomain {
@@ -26,13 +28,30 @@ public class PessoaDomain {
 	
 	@NotNull(message = "O campo NOME deve ser informado!")
 	@NotBlank(message = "O campo NOME deve ser informado!")
+	@Length(min = 3, max = 100, message = "O campo NOME deve ter entre {min} e {max} caracteres!")
 	@Column(name = "NOME", length = 100, unique = true, nullable = false)
 	private String nome;
 	
 	public PessoaDomain() { }
+	
+	public PessoaDomain(Long codigo) {
+		this.codigo = codigo;
+	}
 
 	public PessoaDomain(TipoPessoaDomain tipoPessoaDomain, String nome) {
 		this.tipoPessoaDomain = tipoPessoaDomain;
+		this.nome = nome;
+	}
+
+	public PessoaDomain(Long codigo, TipoPessoaDomain tipoPessoaDomain, String nome) {
+		this.codigo = codigo;
+		this.tipoPessoaDomain = tipoPessoaDomain;
+		this.nome = nome;
+	}
+
+	public PessoaDomain(Long codigo, String descricaoTipoPessoa, String nome) {
+		this.codigo = codigo;
+		this.tipoPessoaDomain = new TipoPessoaDomain(descricaoTipoPessoa);
 		this.nome = nome;
 	}
 

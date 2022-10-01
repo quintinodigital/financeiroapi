@@ -21,4 +21,5 @@
 		- FINANCEIROAPIXXXXXXXXXXX
 		
 			- [HOTFIX] Corrigir classes com interface Serializable 
+			- [HOTFIX] Implementar Retorno para os endpoints: POST e DELETE com mensagens de acordo com o cenário real da API
 			
