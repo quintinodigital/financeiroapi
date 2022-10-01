@@ -21,6 +21,10 @@ public class TipoPessoaDomain {
 	
 	public TipoPessoaDomain() { }
 
+	public TipoPessoaDomain(Long codigo) {
+		this.codigo = codigo;
+	}
+
 	public TipoPessoaDomain(String descricao) {
 		this.descricao = descricao;
 	}

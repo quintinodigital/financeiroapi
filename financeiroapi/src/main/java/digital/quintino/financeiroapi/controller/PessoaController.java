@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import digital.quintino.financeiroapi.domain.PessoaDomain;
 import digital.quintino.financeiroapi.domain.TipoPessoaDomain;
+import digital.quintino.financeiroapi.dto.PessoaResponseDTO;
 import digital.quintino.financeiroapi.repository.TipoPessoaInterfaceRepository;
 import digital.quintino.financeiroapi.service.PessoaService;
 
@@ -43,22 +44,22 @@ public class PessoaController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<PessoaDomain> save(@RequestBody @Valid PessoaDomain pessoaDomain) {
+	public ResponseEntity<PessoaResponseDTO> saveOne(@RequestBody @Valid PessoaDomain pessoaDomain) {
 		return new ResponseEntity<>(this.pessoaService.saveOne(pessoaDomain), HttpStatus.CREATED);
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<PessoaDomain>> findAll() {
+	public ResponseEntity<List<PessoaResponseDTO>> findAll() {
 		return ResponseEntity.ok(this.pessoaService.findAll());
 	}
 	
 	@GetMapping("/{codigo}")
-	public ResponseEntity<PessoaDomain> findOne(@PathVariable(value = "codigo") Long codigo) {
-		PessoaDomain pessoaDomain = this.pessoaService.findOne(codigo);
-		if(pessoaDomain == null) {
+	public ResponseEntity<PessoaResponseDTO> findOne(@PathVariable(value = "codigo") Long codigo) {
+		PessoaResponseDTO pessoaResponseDTO = this.pessoaService.findOne(codigo);
+		if(pessoaResponseDTO == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		} else {
-			return ResponseEntity.ok(pessoaDomain);
+			return ResponseEntity.ok(pessoaResponseDTO);
 		}
 	}
 	
@@ -68,7 +69,7 @@ public class PessoaController {
 	}
 	
 	@PutMapping
-	public PessoaDomain update(@RequestBody PessoaDomain pessoaDomain) {
+	public PessoaResponseDTO update(@RequestBody PessoaDomain pessoaDomain) {
 		return this.pessoaService.updateOne(pessoaDomain);
 	}
 	
