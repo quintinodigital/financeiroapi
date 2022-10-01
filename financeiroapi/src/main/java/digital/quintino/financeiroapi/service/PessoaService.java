@@ -3,6 +3,8 @@ package digital.quintino.financeiroapi.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.ConstraintViolationException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +24,12 @@ public class PessoaService {
 	private TipoPessoaInterfaceRepository tipoPessoaInterfaceRepository;
 	
 	public PessoaResponseDTO saveOne(PessoaDomain pessoaDomain) {
-		PessoaDomain pessoaDomainResultado = this.pessoaInterfaceRepository.save(pessoaDomain); 
+		PessoaDomain pessoaDomainResultado = new PessoaDomain();
+		try {
+			pessoaDomainResultado = this.pessoaInterfaceRepository.save(pessoaDomain); 
+		} catch (Exception e) {
+			throw new ConstraintViolationException("Erro ao tentar persistir do dados!", null);
+		}
 		return this.converterParaDTO(pessoaDomainResultado);
 	}
 	
@@ -44,15 +51,19 @@ public class PessoaService {
 			PessoaDomain pessoaDomain = this.pessoaInterfaceRepository.findById(codigo).get();
 			if(pessoaDomain != null) {
 				return new PessoaResponseDTO(pessoaDomain.getCodigo(), pessoaDomain.getTipoPessoaDomain().getDescricao(), pessoaDomain.getNome());
-			} else {
-				return null;
 			}
 		} catch (Exception e) {
-			return null;
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
 		}
+		return null;
 	}
 	
 	public void deleteOne(Long codigo) {
+		PessoaResponseDTO pessoaResponseDTO = this.findOne(codigo);
+		if(pessoaResponseDTO == null) {
+			throw new ConstraintViolationException("Erro ao tentar deletar a pessoa!", null);
+		}
 		this.pessoaInterfaceRepository.delete(new PessoaDomain(codigo));
 	}
 	

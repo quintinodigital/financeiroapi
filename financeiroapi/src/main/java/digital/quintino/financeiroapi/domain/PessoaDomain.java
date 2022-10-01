@@ -27,7 +27,7 @@ public class PessoaDomain {
 	private TipoPessoaDomain tipoPessoaDomain;
 	
 	@NotNull(message = "O campo NOME deve ser informado!")
-	@NotBlank(message = "O campo NOME deve ser informado!")
+	@NotBlank(message = "O campo NOME deve ser preenchido!")
 	@Length(min = 3, max = 100, message = "O campo NOME deve ter entre {min} e {max} caracteres!")
 	@Column(name = "NOME", length = 100, unique = true, nullable = false)
 	private String nome;
