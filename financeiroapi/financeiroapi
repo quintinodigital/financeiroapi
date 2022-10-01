@@ -17,6 +17,7 @@
 		- FINANCEIROAPI30092022132358
 		
 			- [FEATURE] Implementar endpoints: Tipo de Pessoa, Tipo de Acesso, Pessoa e Acesso
+			- [FEATURE] Criar DTOs de Response de dados
 			
 		- FINANCEIROAPIXXXXXXXXXXX
 		
