@@ -26,3 +26,10 @@
 			- [HOTFIX] Implementar Retorno para os endpoints: POST e DELETE com mensagens de acordo com o cenário real da API
 			- [HOTFIX] Implementar conversor de Entidade e DTO e DTO e Entidade
 			
+		- FINANCEIROAPI06102022134052
+		
+			- [FEATURE] Implementar mapeamento do módulo de Negociação de Dívidas
+			- [FEATURE] Implementar endpoints do módulo de Negociação de Dívidas
+			
+
+			
